@@ -28,6 +28,7 @@ This is a course work project for the course "Architecture of Software Systems".
 ---
 ## Key Features
 
+- Github and Google authentication
 - CRUD operations for microservices
 - Running multiple microservices in parallel
 - Viewing the status and logs of microservices
@@ -47,6 +48,33 @@ This is a course work project for the course "Architecture of Software Systems".
 - React
 - Vercel
 
+## Flows
+
+- Authentication flow
+    - User logs in
+    - User logs out
+    - User signs up
+    - User changes password
+    - User changes email
+    - User changes username
+    - User deletes account
+
+- Microservice management flow
+    - User creates a microservice
+    - User configures the microservice
+    - User runs the microservice
+    - User stops the microservice
+    - User deletes the microservice
+
+---
+## Notes
+
+### Authentication
+Should be implemented via GitHub authentication. We can use the GitHub API to authenticate users and get required information about them, such as their username, email, and avatar. We can also gather the information about the user's repositories and use it to allow the user to manage their wished repository.
+
+
+
+---
 ## Questions
 
 - What should be in the form of creating a microservice?
@@ -69,6 +97,27 @@ It should have:
 
 - Where to store those running microservices?
 On a docker container volume, so that we can easily access and restore them.
+
+---
+## Key Tabs
+
+A user needs to see the dashboard while just opening up the app. The dashboard should contain the following tabs:
+    - Will contain a list of all microservices available with links to each of them separately;
+    - Will contain a chart where we can filter out by the microservice and see the load over time;
+    - We should give a user an ability to choose for what microservices does he want to see the logs, and for which status (error, warning, info, etc.).
+
+Also, we have a separate tab for monitoring microservices:
+    - Will contain a list of all microservices with their status (running, stopped, etc.);
+    - Will contain a chart where we can see the load over time;
+    - Will contain a buttons to run, stop, delete a microservice;
+    - Will contain a button to view the logs of a microservice;
+    - Will contain a button to view the configuration of a microservice.
+
+And a separate tab for CI/CD pipelining:
+    - Will contain a list of all the microservices versions available (with the ability to rollback);
+    - Will contain a list of all the tests available;
+    - Will contain a button to run all the tests;
+    - Will contain a visually pleasing CI/CD pipeline configuration.
 
 ---
 ## Detailed Development Plan
