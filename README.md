@@ -1,11 +1,23 @@
 # Jenkins Analogue
 
 ---
+
 ## Description
 
-This is a course work project for the course "Architecture of Software Systems". The project is a Jenkins analogue. It is a web application that allows you to create, configure, manage microservices and run multiple microservices in parallel. It also has a web interface for viewing the status of microservices and their logs, as well as load balancing. All of that is implemented using Rust, Docker, Google Pub/Sub and Nginx.
+This coursework centers on the design and implementation of PolyMicro Manager, an innovative and extensible system for orchestrating and managing microservices through a modular architecture. The project emphasizes architectural clarity, data flow control, and system composability over low-level optimization.
+
+The system is developed using Python, leveraging its expressiveness and rapid prototyping capabilities to focus on the core architectural aspects—including the design of custom CI/CD pipelines, microservice management, and robust inter-service communication using technologies like Docker, Google Pub/Sub, and Nginx.
+
+Rather than reinventing low-level mechanics, this project is guided by a high-level goal: to build a clean, scalable, and maintainable microservices control system. The platform features:
+
+A visual pipeline builder with building blocks like triggers, command executions, error handling, conditional branches, loops, and even chatbot interactions for intelligent feedback.
+
+Real-time status monitoring for pipelines and microservices.
+
+A focus on customization, extendibility, and modularity, allowing developers to compose workflows tailored to their specific deployment and debugging needs.
 
 ---
+
 ## Installation
 
 1. Clone the repository
@@ -14,6 +26,7 @@ This is a course work project for the course "Architecture of Software Systems".
 4. Open `http://localhost:8080` in your browser
 
 ---
+
 ## Usage
 
 1. Create a new microservice by clicking the "Create" button
@@ -26,6 +39,7 @@ This is a course work project for the course "Architecture of Software Systems".
 8. Click the "Load Balancer" button to view the load balancer
 
 ---
+
 ## Key Features
 
 - Github and Google authentication
@@ -39,6 +53,7 @@ This is a course work project for the course "Architecture of Software Systems".
 - AI-based testing? (if time allows)
 
 ---
+
 ## Technologies
 
 - Rust
@@ -51,34 +66,36 @@ This is a course work project for the course "Architecture of Software Systems".
 ## Flows
 
 - Authentication flow
-    - User logs in
-    - User logs out
-    - User signs up
-    - User changes password
-    - User changes email
-    - User changes username
-    - User deletes account
+
+  - User logs in
+  - User logs out
+  - User signs up
+  - User changes password
+  - User changes email
+  - User changes username
+  - User deletes account
 
 - Microservice management flow
-    - User creates a microservice
-    - User configures the microservice
-    - User runs the microservice
-    - User stops the microservice
-    - User deletes the microservice
+  - User creates a microservice
+  - User configures the microservice
+  - User runs the microservice
+  - User stops the microservice
+  - User deletes the microservice
 
 ---
+
 ## Notes
 
 ### Authentication
+
 Should be implemented via GitHub authentication. We can use the GitHub API to authenticate users and get required information about them, such as their username, email, and avatar. We can also gather the information about the user's repositories and use it to allow the user to manage their wished repository.
 
-
-
 ---
+
 ## Questions
 
 - What should be in the form of creating a microservice?
-There should be:
+  There should be:
 - Microservice name
 - Number of instances
 - Local Environment (development, testing, production) (should be implemented if there is enought time to do that)
@@ -87,72 +104,59 @@ There should be:
 - Port for Docker container to know where to send requests
 
 - What should be in the form of configuring a microservice?
-In some sense, it's just a creation form, but with some options may be blocked to change, unless the microservice is stopped.
+  In some sense, it's just a creation form, but with some options may be blocked to change, unless the microservice is stopped.
 
 - What would look like the structure of the microservice?
-It should have:
-    - A config file, where we can specify all the infomration about it (such as load threshold, number of allowed instances, etc.)
-    - A Dockerfile
-    - A google pub/sub topic for logs
+  It should have: - A config file, where we can specify all the infomration about it (such as load threshold, number of allowed instances, etc.) - A Dockerfile - A google pub/sub topic for logs
 
 - Where to store those running microservices?
-On a docker container volume, so that we can easily access and restore them.
+  On a docker container volume, so that we can easily access and restore them.
 
 ---
+
 ## Key Tabs
 
-A user needs to see the dashboard while just opening up the app. The dashboard should contain the following tabs:
-    - Will contain a list of all microservices available with links to each of them separately;
-    - Will contain a chart where we can filter out by the microservice and see the load over time;
-    - We should give a user an ability to choose for what microservices does he want to see the logs, and for which status (error, warning, info, etc.).
+A user needs to see the dashboard while just opening up the app. The dashboard should contain the following tabs: - Will contain a list of all microservices available with links to each of them separately; - Will contain a chart where we can filter out by the microservice and see the load over time; - We should give a user an ability to choose for what microservices does he want to see the logs, and for which status (error, warning, info, etc.).
 
-Also, we have a separate tab for monitoring microservices:
-    - Will contain a list of all microservices with their status (running, stopped, etc.);
-    - Will contain a chart where we can see the load over time;
-    - Will contain a buttons to run, stop, delete a microservice;
-    - Will contain a button to view the logs of a microservice;
-    - Will contain a button to view the configuration of a microservice.
+Also, we have a separate tab for monitoring microservices: - Will contain a list of all microservices with their status (running, stopped, etc.); - Will contain a chart where we can see the load over time; - Will contain a buttons to run, stop, delete a microservice; - Will contain a button to view the logs of a microservice; - Will contain a button to view the configuration of a microservice.
 
-And a separate tab for CI/CD pipelining:
-    - Will contain a list of all the microservices versions available (with the ability to rollback);
-    - Will contain a list of all the tests available;
-    - Will contain a button to run all the tests;
-    - Will contain a visually pleasing CI/CD pipeline configuration.
+And a separate tab for CI/CD pipelining: - Will contain a list of all the microservices versions available (with the ability to rollback); - Will contain a list of all the tests available; - Will contain a button to run all the tests; - Will contain a visually pleasing CI/CD pipeline configuration.
 
 ---
+
 ## Detailed Development Plan
 
 1. [ ] Create a web application that allows to download and run Jenkins Analogue.
-    - [ ] Create a React application.
-    - [ ] Write all the necessary text to display.
-    - [ ] Deploy the application to the vercel.
+   - [ ] Create a React application.
+   - [ ] Write all the necessary text to display.
+   - [ ] Deploy the application to the vercel.
 2. [ ] Create a web interface for creating, configuring, managing microservices.
-    - [ ] Create a web interface for creating microservices.
-        - [ ] Create a form for creating microservices.
-            - [ ] Create a field for the name of the microservice.
-            - [ ] Create a field for the number of instances of the microservice.
-            - [ ] Create a dropdown for the local environment of the microservice.
-                - [ ] Create a field for the development environment of the microservice.
-                - [ ] Create a field for the testing environment of the microservice.
-                - [ ] Create a field for the production environment of the microservice.
-            - [ ] Create a field for the command to run the microservice.
-            - [ ] Create a field for the environment variables of the microservice.
-        - [ ] Create a button for creating microservices.
-    - [ ] Create a web interface for configuring microservices.
-        - [ ] Create a button for configuring microservices.
-        - [ ] Create a form for configuring microservices.
-    - [ ] Create a web interface for managing microservices.
-        - [ ] Create a button for running microservices.
-        - [ ] Create a button for stopping microservices.
-        - [ ] Create a button for deleting microservices.
+   - [ ] Create a web interface for creating microservices.
+     - [ ] Create a form for creating microservices.
+       - [ ] Create a field for the name of the microservice.
+       - [ ] Create a field for the number of instances of the microservice.
+       - [ ] Create a dropdown for the local environment of the microservice.
+         - [ ] Create a field for the development environment of the microservice.
+         - [ ] Create a field for the testing environment of the microservice.
+         - [ ] Create a field for the production environment of the microservice.
+       - [ ] Create a field for the command to run the microservice.
+       - [ ] Create a field for the environment variables of the microservice.
+     - [ ] Create a button for creating microservices.
+   - [ ] Create a web interface for configuring microservices.
+     - [ ] Create a button for configuring microservices.
+     - [ ] Create a form for configuring microservices.
+   - [ ] Create a web interface for managing microservices.
+     - [ ] Create a button for running microservices.
+     - [ ] Create a button for stopping microservices.
+     - [ ] Create a button for deleting microservices.
 3. [ ] Create a button for viewing the status of microservices in real-time.
-    - [ ] Create a web interface for viewing the status of microservices.
-    - [ ] Display the status of microservices in real-time.
-    - [ ] Display the status of microservices for a specific period of time.
+   - [ ] Create a web interface for viewing the status of microservices.
+   - [ ] Display the status of microservices in real-time.
+   - [ ] Display the status of microservices for a specific period of time.
 4. [ ] Create a web interface for load balancing.
-    - [ ] Create a button for viewing the load balancer in real-time.
-    - [ ] Display the graph of the load over time.
-    - [ ] (Maybe) Display a scheme of the load balancer for each microservice.
+   - [ ] Create a button for viewing the load balancer in real-time.
+   - [ ] Display the graph of the load over time.
+   - [ ] (Maybe) Display a scheme of the load balancer for each microservice.
 5. [ ] Implement the ability to create microservices.
 6. [ ] Implement the ability to delete microservices.
 7. [ ] Implement the ability to run microservices.
@@ -173,4 +177,3 @@ And a separate tab for CI/CD pipelining:
 14. [ ] Implement the ability to view the results of tests for microservices.
     - [ ] Implement the ability to view the results of unit tests for microservices.
     - [ ] Implement the ability to view the results of integration tests for microservices.
-
